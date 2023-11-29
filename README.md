@@ -82,11 +82,12 @@ Output:
 > ABCDEFGHIJKLMNOPQRSTUVWXYZ
 > 1234567890
 ```
+To run this example:
+* Upload into hub [this file](/get_slot_path.py) into slot #19.
+* Upload into hub [this data](/slot_0) into slot #0 and run program from slot #19.
 
 ### Count occurancy in a large file
 This [code](/the_first_1,000,000_digits_of_pi.py) demonstrates how to retrieve the file path associated with the slot number `3`, count and print the occurrences of `'2024'` within data file from the third slot.
-Upload [this file](/the_first_1,000,000_digits_of_pi.py) into slot #19.
-Upload [this data](/slot_3) into slot #3 and run program from slot #19.
 ```
 # If you are using SPIKE Legacy, uncomment the spike imports
 # and comment out the Mindstorms imports:
@@ -132,3 +133,10 @@ Output:
 > 2024 occurs 92 times in the first 1,000,000 digits of pi
 > It took 00:01:42
 ```
+To run this example:
+* Upload into hub [this file](/the_first_1,000,000_digits_of_pi.py) into slot #19.
+> [!IMPORTANT]
+> If you are using SPIKE Legacy, uncomment the Spike imports and comment out the Mindstorms imports.
+* Upload into hub [this data](/slot_3) into slot #3 and run program from slot #19.
+> [!NOTE]
+> It may take approximately 6 minutes to store.
