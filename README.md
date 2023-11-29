@@ -27,7 +27,7 @@ This projecty provides a solution to store and manage large data files for use w
 
 > [!NOTE]
 > Larger data files might take some time to upload.
-> For instance, a file containing 1,000,000 digits of pi took approximately 5 and a half minutes to store.
+> For instance, a [file containing 1,000,000 digits of pi](/slot_3) took approximately 6 minutes to store.
 
 # The `get_slot_path` function
 
@@ -57,8 +57,9 @@ If the `do_check` argument is set to `True` and a file exists for the given slot
 It opens the file and reads its first line. Subsequently, it compares the first word from this line with the provided `check_word` argument. If the first word matches the `check_word` argument, indicating a successful check, the function proceeds to return the path to the file. However, if there's a mismatch, signifying a failed check, the function raises a `RuntimeError`.
 
 
-## Example
-This code snippet demonstrates how to retrieve the file path associated with the slot number `0` and print the contents of the file if it exists and has a `'.py'` extension. It also handles errors that may occur during path retrieval.
+## Examples
+### File reading
+This [code](/get_slot_path.py) demonstrates how to retrieve the file path associated with the slot number `0` and print the contents of the file if it exists and has a `'.py'` extension. It also handles errors that may occur during path retrieval.
 ```
 def get_slot_path...
 
@@ -74,4 +75,60 @@ else:
         # Iterate through each line in the file and print its contents:
         for line in file:
             print(line)
+```
+Output:
+```
+> Slot 0
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ
+> 1234567890
+```
+
+### Count occurancy in a large file
+This [code](/the_first_1,000,000_digits_of_pi.py) demonstrates how to retrieve the file path associated with the slot number `3`, count and print the occurrences of `'2024'` within data file from the third slot.
+Upload [this file](/the_first_1,000,000_digits_of_pi.py) into slot #19.
+Upload [this data](/slot_3) into slot #3 and run program from slot #19.
+```
+# If you are using SPIKE Legacy, uncomment the spike imports
+# and comment out the Mindstorms imports:
+
+# from spike.controls import Timer
+from mindstorms.control import Timer
+
+
+def get_slot_path(slot: int = 0,
+...
+
+
+def seconds_to_time(seconds: int, mode: str = 'hh:mm:ss') -> str:
+...
+
+
+timer = Timer()
+timer.reset()
+
+slot_num = 3
+word_to_search = '2024'
+
+path = get_slot_path(slot_num)
+rest_of_line = ''
+number_of_occurrences = 0
+
+with open(path, 'r') as file:
+    for line in file:
+        line_ = rest_of_line + line.replace(' ', '').rstrip()
+        number_of_occurrences = number_of_occurrences + line_.count(
+            word_to_search)
+        rest_of_line = line_[-3:]
+
+time = timer.now()
+
+print('{} occurs {} times in the first 1,000,000 digits of pi'.format(
+    word_to_search, number_of_occurrences))
+print('It took: {}'.format(seconds_to_time(time)))
+
+```
+Output:
+```
+> 2024 occurs 92 times in the first 1,000,000 digits of pi
+> It took 00:01:42
 ```
