@@ -50,7 +50,7 @@ def get_slots_paths(extension: str = '.py',
         except OSError:
             del slots_dict[key]
 
-    return sorted_slots_dict
+    return slots_dict
 
 
 timer = Timer()
