@@ -60,9 +60,8 @@ paths = get_slots_paths()
 rest_of_line = ''
 number_of_occurrences = 0
 
-print('It may take a wail...\nPlease wait.')
-
 if slot_num in paths:
+    print('It may take a wail...\nPlease wait.')
     with open(paths[slot_num], 'r') as file:
         # Iterate through each line in the file and print its contents:
         for line in file:
