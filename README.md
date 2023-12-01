@@ -44,13 +44,13 @@ This function retrieves the paths associated with available slots from the `proj
 ### Returns
   - `dict`: The dictionary of available slots and their paths, or empty dictionary, if no available slots.
 
-## Validation process in the `get_slots_paths` function
+## File format check:
 
-When the `do_check` argument is set to `False` and a file exists for a specified slot, the function promptly returns the path to that file.
+If the `do_check` argument is `True`, the function compares the first word of the file with `check_word`.
 
-If the `do_check` argument is set to `True` and a file exists for the given slot, the function performs an additional validation process. 
+If they match, the test is passed.
 
-It opens the file and reads its first line. Subsequently, it compares the first word from this line with the provided `check_word` argument. If the first word matches the `check_word` argument, indicating a successful check, the function proceeds to return the path to the file. However, if there's a mismatch, signifying a failed check, the function raises a `RuntimeError`.
+If they are different, that slot-path pair is excluded from the dictionary.
 
 
 ## Examples
