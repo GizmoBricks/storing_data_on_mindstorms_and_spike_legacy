@@ -9,20 +9,27 @@ def get_slots_paths(extension: str = '.py',
                     do_check: bool = False,
                     check_word: str = '') -> dict:
     """
-    Retrieve the paths associated with available slots
-    from the 'projects/.slots' file.
+    This function retrieves the paths associated with available slots
+    from the projects/.slots file.
 
     Args:
     - extension (str, optional): The file extension to append the path
-                                (default: '.py').
+                                 (default: '.py').
     - do_check (bool, optional): Flag to indicate whether to perform
-                                a file format check (default: False).
+                                 a file format check (default: False).
     - check_word (str, optional): The word used for file format checking
-                                (default: empty string).
+                                  (default: empty string).
 
     Returns:
     - dict: The dictionary of available slots and their paths,
             or empty dictionary, if no available slots.
+
+    File format check:
+    If the do_check argument is True, the function compares
+    the first word of the file with check_word.
+    If they match, the test is passed.
+    If they are different, that slot-path pair is excluded
+    from the dictionary.
 
     Note: the function was tested with Mindstorms app
     and SPIKE Legacy app on Mindstorms hub.
