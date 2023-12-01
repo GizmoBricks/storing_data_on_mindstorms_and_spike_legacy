@@ -12,12 +12,15 @@ This project provides a solution to store and manage large data files for use wi
 2.	Delete any existing data within the project.
 3.	Input or paste your data.
 4.	Select slot and download or run the Project:
-    - Select the appropriate slot on the hub and press the 'Download' button. Alternatively, you can press the 'Run' button.
+    - Select the appropriate slot on the hub and press the 'Download' button. Alternatively, you can press the 'Play' button. ![Select slot](https://github.com/GizmoBricks/get_slot_path/assets/127412675/7fe719f3-4166-461c-9c16-d9c6a0913152) ![Download into the slot](https://github.com/GizmoBricks/get_slot_path/assets/127412675/9c7c91ca-6a43-437e-82a0-539a8cef7094)
+
+
 > [!NOTE]
-> If you choose to press 'Run,' the app console return a SyntaxError. This is normal and the file will still be stored on the hub.
+> If you choose to press 'Play', the app console return a SyntaxError. This is normal and the file will still be stored on the hub.
+> ![SyntaxError](https://github.com/GizmoBricks/get_slot_path/assets/127412675/79eaf3f6-2462-4473-94d1-ebb93c779ac1)
     	
 5.	Verify the Stored File:
-    - Navigate to Hub -> Programs. Wait patiently until the program appears in the respective slot's line.
+    - Press 'Open Hub connections', choose 'Programms' tab. Wait patiently until the program appears in the respective slot's line. ![Press 'Hub'](https://github.com/GizmoBricks/get_slot_path/assets/127412675/3e5ffb67-5d3b-44a5-a9fc-0272fe88e336) ![Select the 'Programs' tab](https://github.com/GizmoBricks/get_slot_path/assets/127412675/64ab19d8-78e8-4fde-90e0-a971bb038e4d) ![The file 'slot_1' has been successfully uploaded](https://github.com/GizmoBricks/get_slot_path/assets/127412675/209a61e7-0e33-433b-aa9a-1afd341d5782)
   
 > [!CAUTION]
 > Do not disconect the hub during file uploading to avoid interruptions or data loss.
@@ -77,11 +80,9 @@ else:
             print(line)
 ```
 Output:
-```
-> Slot 0
-> ABCDEFGHIJKLMNOPQRSTUVWXYZ
-> 1234567890
-```
+
+![The result of running the example in the console](https://github.com/GizmoBricks/get_slot_path/assets/127412675/85bee1eb-3749-4eed-9460-a9c2a97d4bbd)
+
 To run this example:
 * Upload [this file](/get_slot_path.py) into slot #19.
 * Upload [this data](/slot_0) into slot #0 and run program from slot #19.
@@ -96,8 +97,7 @@ This [code](/the_first_1,000,000_digits_of_pi.py) demonstrates how to retrieve t
 from mindstorms.control import Timer
 
 
-def get_slot_path(slot: int = 0,
-...
+def get_slot_path...
 
 
 timer = Timer()
@@ -126,17 +126,17 @@ print(' \n{} occurs {} times in the first 1,000,000 digits of pi'.format(
 print('It took: {}:{:02}'.format(minutes, seconds))
 ```
 Output:
-```
-> It may trake a wail...
-> Please wait.
->
-> 2024 occurs 92 times in the first 1,000,000 digits of pi
-> It took 00:01:42
-```
+
+![The result of running the example in the console](https://github.com/GizmoBricks/get_slot_path/assets/127412675/9d87da42-ea9b-40da-b42a-20bf3cd6beb9)
+
 To run this example:
 * Upload [this file](/the_first_1,000,000_digits_of_pi.py) into slot #19.
 > [!IMPORTANT]
 > If you are using SPIKE Legacy, uncomment the Spike imports and comment out the Mindstorms imports.
+> ```
+> from spike.controls import Timer
+> # from mindstorms.control import Timer
+> ```
 * Upload [this data](/slot_3) into slot #3 and run program from slot #19.
 > [!NOTE]
 > It may take approximately 6 minutes to store.
