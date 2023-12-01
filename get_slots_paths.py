@@ -43,10 +43,6 @@ def get_slots_paths(extension: str = '.py',
         except OSError:
             del slots_dict[key]
 
-    slots = list(slots_dict.keys())
-    slots.sort()
-    sorted_slots_dict = {i: slots_dict[i] for i in slots}
-
     return sorted_slots_dict
 
 
