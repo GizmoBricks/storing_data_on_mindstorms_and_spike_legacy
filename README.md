@@ -43,8 +43,10 @@ This function retrieves the paths associated with available slots from the `proj
 
 ### Returns
   - `dict`: The dictionary of available slots and their paths, or empty dictionary, if no available slots.
+> [!NOTE]
+> The dictionary is not sorted.
 
-## File format check:
+### File format check:
 
 If the `do_check` argument is `True`, the function compares the first word of the file with `check_word`.
 
@@ -83,7 +85,7 @@ To run this example:
 * Upload [this file](/get_slots_paths.py) into slot #19.
 * Upload [this data](/slot_0) into slot #0 and run program from slot #19.
 
-### Count occurancy in a large file
+### Count occurances in a large file
 This [code](/the_first_1,000,000_digits_of_pi.py) demonstrates how to retrieve the file path associated with the slot number `3`, count and print the occurrences of `'2024'` within data file from the third slot.
 ``` python
 # If you are using SPIKE Legacy, uncomment the spike imports
