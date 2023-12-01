@@ -100,19 +100,17 @@ def get_slot_path(slot: int = 0,
 ...
 
 
-def seconds_to_time(seconds: int, mode: str = 'hh:mm:ss') -> str:
-...
-
-
 timer = Timer()
 timer.reset()
 
-slot_num = 3
+slot_num = 18
 word_to_search = '2024'
 
 path = get_slot_path(slot_num)
 rest_of_line = ''
 number_of_occurrences = 0
+
+print('It may take a wail...\nPlease wait.')
 
 with open(path, 'r') as file:
     for line in file:
@@ -121,15 +119,17 @@ with open(path, 'r') as file:
             word_to_search)
         rest_of_line = line_[-3:]
 
-time = timer.now()
+minutes, seconds = divmod(timer.now(), 60)
 
-print('{} occurs {} times in the first 1,000,000 digits of pi'.format(
+print(' \n{} occurs {} times in the first 1,000,000 digits of pi'.format(
     word_to_search, number_of_occurrences))
-print('It took: {}'.format(seconds_to_time(time)))
-
+print('It took: {}:{:02}'.format(minutes, seconds))
 ```
 Output:
 ```
+> It may trake a wail...
+> Please wait.
+>
 > 2024 occurs 92 times in the first 1,000,000 digits of pi
 > It took 00:01:42
 ```

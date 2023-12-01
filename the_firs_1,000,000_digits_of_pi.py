@@ -61,52 +61,6 @@ def get_slot_path(slot: int = 0,
                            'or try another slot.'.format(slot))
 
 
-def seconds_to_time(seconds: int, mode: str = 'hh:mm:ss') -> str:
-    """
-    Converts a given number of seconds into a specified time format.
-
-    Args:
-    - seconds (int): The number of seconds to be converted.
-    - mode (str): The desired time format mode. (default: 'hh:mm:ss')
-    Allowed modes are: 'mm:ss', 'hh:mm:ss', 'D.hh:mm:ss', 'hh:mm',
-                        'D.hh:mm'.
-
-    Returns:
-    - str: A string representing the time in the specified format.
-
-    Raises:
-    - ValueError: If the provided mode is not one of the allowed modes.
-    """
-
-    valid_modes = ('mm:ss', 'hh:mm:ss', 'D.hh:mm:ss', 'hh:mm', 'D.hh:mm')
-    if mode not in valid_modes:
-        raise ValueError(
-            "Invalid mode. Allowed modes are: {}".format(valid_modes)
-        )
-
-    days = hours = minutes = 0
-
-    if 'D' in mode:
-        days, seconds = divmod(seconds, 86400)  # 86400 sec in a day
-
-    if 'hh' in mode:
-        hours, seconds = divmod(seconds, 3600)  # 3600 sec in an hour
-
-    # It is allways True. It is here in case valid_modes changes.
-    if 'mm' in mode:
-        minutes, seconds = divmod(seconds, 60)
-
-    if seconds >= 30 and 'ss' not in mode:
-        minutes += 1
-
-    time_format = mode.replace('D', str(days))
-    time_format = time_format.replace('hh', "{:02}".format(hours))
-    time_format = time_format.replace('mm', "{:02}".format(minutes))
-    time_format = time_format.replace('ss', "{:02}".format(seconds))
-
-    return time_format
-
-
 timer = Timer()
 timer.reset()
 
@@ -117,6 +71,8 @@ path = get_slot_path(slot_num)
 rest_of_line = ''
 number_of_occurrences = 0
 
+print('It may take a wail...\nPlease wait.')
+
 with open(path, 'r') as file:
     for line in file:
         line_ = rest_of_line + line.replace(' ', '').rstrip()
@@ -124,8 +80,8 @@ with open(path, 'r') as file:
             word_to_search)
         rest_of_line = line_[-3:]
 
-time = timer.now()
+minutes, seconds = divmod(timer.now(), 60)
 
 print('{} occurs {} times in the first 1,000,000 digits of pi'.format(
     word_to_search, number_of_occurrences))
-print('It took: {}'.format(seconds_to_time(time)))
+print('It took: {}:{:02}'.format(minutes, seconds))
