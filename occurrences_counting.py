@@ -1,10 +1,3 @@
-# If you are using SPIKE Legacy, uncomment the spike imports
-# and comment out the Mindstorms imports:
-
-# from spike.controls import Timer
-from mindstorms.control import Timer
-
-
 def get_slots_paths(extension: str = '.py',
                     do_check: bool = False,
                     check_word: str = '') -> dict:
@@ -53,29 +46,21 @@ def get_slots_paths(extension: str = '.py',
     return slots_dict
 
 
-timer = Timer()
-timer.reset()
-
 slot_num = 3
-word_to_search = '2024'
 paths = get_slots_paths()
-
-rest_of_line = ''
-number_of_occurrences = 0
 
 if slot_num in paths:
     print('It may take a wail...\nPlease wait.')
+    number_of_occurrences = [0 for _ in range(10)]
     with open(paths[slot_num], 'r') as file:
-        # Iterate through each line in the file and print its contents:
+        next(file)  # skip first line
         for line in file:
-            line_ = rest_of_line + line.replace(' ', '').rstrip()
-            number_of_occurrences = number_of_occurrences + line_.count(
-                word_to_search)
-            rest_of_line = line_[-3:]
-    minutes, seconds = divmod(timer.now(), 60)
+            for i in range(10):
+                number_of_occurrences[i] += line.count(str(i))
 
-    print(' \n{} occurs {} times in the first 1,000,000 digits of pi'.format(
-        word_to_search, number_of_occurrences))
-    print('It took: {}:{:02}'.format(minutes, seconds))
+    for i in range(10):
+        print('{} occurs {} times.'.format(i, number_of_occurrences[i]))
+    print('Total: {}'.format(sum(number_of_occurrences)))
+
 else:
     print('Slot {} is empty.'.format(slot_num))
