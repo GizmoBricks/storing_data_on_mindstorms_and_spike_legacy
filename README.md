@@ -86,15 +86,8 @@ To run this example:
 * Upload [this data](/slot_0) into slot #0 and run program from slot #19.
 
 ### Count occurances in a large file
-This [code](/the_first_1,000,000_digits_of_pi.py) demonstrates how to retrieve the file path associated with the slot number `3`, count and print the occurrences of `'2024'` within data file from the third slot.
+This [code](//occurrences_counting.py) demonstrates how to retrieve the file path associated with the slot number `3`, count and print the occurrences of each digit (0-9) within data file from the third slot.
 ``` python
-# If you are using SPIKE Legacy, uncomment the spike imports
-# and comment out the Mindstorms imports:
-
-# from spike.controls import Timer
-from mindstorms.control import Timer
-
-
 def get_slots_paths(extension: str = '.py',
                     do_check: bool = False,
                     check_word: str = '') -> dict:
@@ -102,45 +95,31 @@ def get_slots_paths(extension: str = '.py',
     return sorted_slots_dict
 
 
-timer = Timer()
-timer.reset()
-
 slot_num = 3
-word_to_search = '2024'
 paths = get_slots_paths()
-
-rest_of_line = ''
-number_of_occurrences = 0
 
 if slot_num in paths:
     print('It may take a wail...\nPlease wait.')
+    number_of_occurrences = [0 for _ in range(10)]
     with open(paths[slot_num], 'r') as file:
-        # Iterate through each line in the file and print its contents:
+        next(file)  # skip first line
         for line in file:
-            line_ = rest_of_line + line.replace(' ', '').rstrip()
-            number_of_occurrences = number_of_occurrences + line_.count(
-                word_to_search)
-            rest_of_line = line_[-3:]
-    minutes, seconds = divmod(timer.now(), 60)
+            for i in range(10):
+                number_of_occurrences[i] += line.count(str(i))
 
-    print(' \n{} occurs {} times in the first 1,000,000 digits of pi'.format(
-        word_to_search, number_of_occurrences))
-    print('It took: {}:{:02}'.format(minutes, seconds))
+    for i in range(10):
+        print('{} occurs {} times.'.format(i, number_of_occurrences[i]))
+    print('Total: {}'.format(sum(number_of_occurrences)))
+
 else:
     print('Slot {} is empty.'.format(slot_num))
 ```
 Output:
 
-![The result of running the example in the console](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/e948c489-2bbe-417d-8728-07a90ce132b7)
+![The result of running the example in the console](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/ae995cf9-50ab-42d7-b8e5-5684632cc7cb)
 
 To run this example:
-* Upload [this file](/the_first_1,000,000_digits_of_pi.py) into slot #19.
-> [!IMPORTANT]
-> If you are using SPIKE Legacy, uncomment the Spike imports and comment out the Mindstorms imports.
-> ``` python
-> from spike.controls import Timer
-> # from mindstorms.control import Timer
-> ```
+* Upload [this file](/occurrences_counting.py) into slot #19.
 * Upload [this data](/slot_3) into slot #3 and run program from slot #19.
 > [!NOTE]
-> It may take approximately 6 minutes to store.
+> It may take approximately 6 minutes to store data.
