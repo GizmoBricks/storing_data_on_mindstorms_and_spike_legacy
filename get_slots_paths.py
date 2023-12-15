@@ -6,7 +6,8 @@ def get_slots_paths(extension: str = '.py',
     from the projects/.slots file.
 
     Args:
-    - extension (str, optional): The file extension to append the path
+    - extension (str, optional): The file extension to append the path.
+                                 Valid values: '.py', '.mpy'.
                                  (default: '.py').
     - do_check (bool, optional): Flag to indicate whether to perform
                                  a file format check (default: False).
@@ -17,6 +18,10 @@ def get_slots_paths(extension: str = '.py',
     - dict: The dictionary of available slots and their paths,
             or empty dictionary, if no available slots.
 
+    Raises:
+        ValueError if extension is not one of valid values:
+        '.py', '.mpy'.
+
     File format check:
     If the do_check argument is True, the function compares
     the first word of the file with check_word.
@@ -24,11 +29,13 @@ def get_slots_paths(extension: str = '.py',
     If they are different, that slot-path pair is excluded
     from the dictionary.
 
-    Note: the function was tested with Mindstorms app
-    and SPIKE Legacy app on Mindstorms hub.
-    If you can test it with SPIKE 3 app on the Spike Prime hub,
-    please, give me feedback (GizmoBricksChannel@gmail.com)
+    Note: this function does not work with SPIKE 3.
     """
+    valid_extensions = '.py', '.mpy'
+    if extension not in valid_extensions:
+        raise ValueError('Extension is not one of valid extensions: {}.'
+                         ''.format(valid_extensions))
+
     with open('projects/.slots', 'r') as slots_file:
         slots_dict = eval(slots_file.readline())
 
