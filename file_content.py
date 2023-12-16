@@ -58,13 +58,13 @@ def get_slots_paths(extension: str = '.py',
 # the contents of the file if it exists and has a '.py' extension.
 # If file doesn't exist or has another extension,
 # error message will be print.
-slot_num = 0
+slot = 0
 
 paths = get_slots_paths()
-if slot_num in paths:
-    with open(paths[slot_num], 'r') as file:
+if slot in paths:
+    with open(paths[slot], 'r') as file:
         # Iterate through each line in the file and print its contents:
         for line in file:
             print(line)
 else:
-    print('Slot {} is empty.'.format(slot_num))
+    print('Slot {} is empty or file has another extension.'.format(slot))

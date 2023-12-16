@@ -53,13 +53,13 @@ def get_slots_paths(extension: str = '.py',
     return slots_dict
 
 
-slot_num = 3
+slot = 3
 paths = get_slots_paths()
 
-if slot_num in paths:
+if slot in paths:
     print('It may take a wail...\nPlease wait.')
     number_of_occurrences = [0 for _ in range(10)]
-    with open(paths[slot_num], 'r') as file:
+    with open(paths[slot], 'r') as file:
         next(file)  # skip first line
         for line in file:
             for i in range(10):
@@ -70,4 +70,4 @@ if slot_num in paths:
     print('Total: {}'.format(sum(number_of_occurrences)))
 
 else:
-    print('Slot {} is empty.'.format(slot_num))
+    print('Slot {} is empty or file has another extension.'.format(slot))
