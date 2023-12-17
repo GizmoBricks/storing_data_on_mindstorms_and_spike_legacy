@@ -8,17 +8,15 @@ This project provides a solution to store and manage large data files for use wi
 
 # An "exploit":
 
-## How projects are stored in the Hub's memory:
-
 If a project doesn't contain any Syntax Errors, it will be precompiled by the app into a MicroPython `.mpy` file and stored in the Hub.
 
 A MicroPython file is a binary file. More importantly, as it's a precompiled file, its content will differ from the original file.
 
 
 However, if a project contains any Syntax Errors, it'll be stored in the Hub as a regular Python `.py` file, essentially a text file.
-Text files are easily navigable using Python. This method capitalizes on this “exploit.”
+Text files are easily navigable using Python. This method capitalizes on this “exploit”.
 
-## Where are projects stored in the Hub:
+# Where are projects stored in the Hub:
 
 All projects reside in the `/projects/` directory, each having its own directory. These directories are labeled with specific digits, acting as unique IDs. All these IDs are recorded in the `.slots` file.
 
