@@ -114,7 +114,7 @@ If they are different, that slot-path pair is excluded from the dictionary.
 
 ## Examples
 ### File reading
-This [code](/examples/file_content.py) demonstrates how to retrieve the file path associated with the slot number `0` and print the contents of the file if it exists and has a `'.py'` extension. 
+This [code](/examples/file_content_reading.py) demonstrates how to retrieve the file path associated with the slot number `0` and print the contents of the file if it exists and has a `'.py'` extension. 
 ``` python
 def get_slots_paths(extension: str = '.py',
                     do_check: bool = False,
@@ -139,7 +139,7 @@ Output:
 ![The result of running the example in the console](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/956944d6-64e3-4cc7-a640-525742b62f01)
 
 To run this example:
-* Upload [this file](/examples/file_content.py) into slot #19.
+* Upload [this file](/examples/file_content_reading.py) into slot #19.
 * Upload [this data](/examples/slot_0) into slot #0 and run program from slot #19.
 
 ### Count occurances in a large file
