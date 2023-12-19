@@ -57,7 +57,7 @@ The `.slots` file can be utilized to access paths for all programs available on 
 1.	Create a Python Project with MINDSTORMS app or SPIKE Legacy app.
 2.	Delete any existing data within the project.
 3.	Input or paste your data.
-4.	Select slot and download or run the Project: ![Uploading data into the Hub](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/b80a6d0c-0ce9-42ef-b7c7-075e3136e513)
+4.	Select slot and upload or run the Project: ![Uploading data into the Hub](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/b80a6d0c-0ce9-42ef-b7c7-075e3136e513)
 
 > [!NOTE]
 > If you choose to press 'Play', the app console return a SyntaxError. This is normal and the file will still be stored on the hub.
