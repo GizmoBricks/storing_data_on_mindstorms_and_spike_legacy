@@ -2,7 +2,6 @@
 This project provides a solution to store and manage large data files for use with the Mindstorms Robot Inventor Hub and Spike Prime Hub via their official apps. It has been tested with the SPIKE Legacy firmware and app.
 
 > [!IMPORTANT]
-> Spike 3:
 > This method doesn't work with Spike 3.
 > [Here](https://github.com/GizmoBricks/storing_data_on_spike_3) solution for Spike 3.
 
