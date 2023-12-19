@@ -5,7 +5,7 @@ This project provides a solution to store and manage large data files for use wi
 > This method doesn't work with Spike 3.
 > [Here](https://github.com/GizmoBricks/storing_data_on_spike_3) solution for Spike 3.
 
-# An "exploit":
+# An "exploit"
 
 If a project doesn't contain any Syntax Errors, it will be precompiled by the app into a MicroPython `.mpy` file and stored in the Hub.
 
@@ -15,7 +15,7 @@ A MicroPython file is a binary file. More importantly, as it's a precompiled fil
 However, if a project contains any Syntax Errors, it'll be stored in the Hub as a regular Python `.py` file, essentially a text file.
 Text files are easily navigable using Python. This method capitalizes on this “exploit”.
 
-# Where are projects stored in the Hub:
+# Where are projects stored in the Hub
 
 All projects reside in the `/projects/` directory, each having its own directory. These directories are labeled with specific digits, acting as unique IDs. All these IDs are recorded in the `.slots` file.
 
@@ -52,7 +52,7 @@ These secondary level dictionaries contain project attributes such as:
 
 The `.slots` file can be utilized to access paths for all programs available on the Hub.
 
-# How to load data file into the Hub:
+# How to load data file into the Hub
 
 1.	Create a Python Project with MINDSTORMS app or SPIKE Legacy app.
 2.	Delete any existing data within the project.
@@ -94,7 +94,7 @@ The `.slots` file can be utilized to access paths for all programs available on 
 ### Raises
   - `ValueError` if extension is not one of valid values: `'.py'`, `'.mpy'`.
 
-### What the function exactly does:
+### What the function exactly does
 
 The `get_slot_path` function converts the `.slots` file data into a dictionary using the `eval()` function. For each available slot in the dictionary, it replaces the value, a dictionary of project attributes, with the path to the project file.
 
