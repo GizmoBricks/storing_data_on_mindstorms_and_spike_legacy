@@ -15,7 +15,7 @@ A MicroPython file is a binary file. More importantly, as it's a precompiled fil
 However, if a project contains any Syntax Errors, it'll be stored in the Hub as a regular Python `.py` file, essentially a text file.
 Text files are easily navigable using Python. This method capitalizes on this “exploit”.
 
-# Where are projects stored in the Hub
+# Project Storage in the Hub
 
 All projects reside in the `/projects/` directory, each having its own directory. These directories are labeled with specific digits, acting as unique IDs. All these IDs are recorded in the `.slots` file.
 
@@ -52,7 +52,7 @@ These secondary level dictionaries contain project attributes such as:
 
 The `.slots` file can be utilized to access paths for all programs available on the Hub.
 
-# How to load data file into the Hub
+# Uploading Data Files to the Hub
 
 1.	Create a Python Project with MINDSTORMS app or SPIKE Legacy app.
 2.	Delete any existing data within the project.
@@ -100,15 +100,12 @@ The `get_slot_path` function converts the `.slots` file data into a dictionary u
 
 The function then applies a two-step check of the file.
 
-The first step tries to open the file, and if successful, the first step passes. If an `OSError` occurs, the slot number – path pair is deleted from the dictionary. It is filter out files with extension different from `extension` argument.
+1. The first step tries to open the file, and if successful, the first step passes. If an `OSError` occurs, the slot number – path pair is deleted from the dictionary. It is filter out files with extension different from `extension` argument.
 
-#### Second check syep (file format check):
-
-If the `do_check` argument is `True`, the function compares the first word of the file with `check_word`.
-
-If they match, the test is passed.
-
-If they are different, that slot-path pair is excluded from the dictionary.
+2. Second check step (file format check):
+* If the `do_check` argument is `True`, the function compares the first word of the file with `check_word`.
+* If they match, the test is passed.
+* If they are different, that slot-path pair is excluded from the dictionary.
 
 
 ## Examples
