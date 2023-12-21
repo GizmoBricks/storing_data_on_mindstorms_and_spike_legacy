@@ -28,7 +28,7 @@ print(__file__)
 
 The ID of each project changes every time you run or upload the program from the app. However, this ID remains unchanged if you run the program directly from the Hub.
 
-`.slots` file can be readed with this code:
+`.slots` file can be read with this code:
 ```python
 with open(‘projects/.slots’, ‘r’) as file:
     for line in file:
@@ -81,8 +81,7 @@ The `.slots` file can be utilized to access paths for all programs available on 
 [This function](/get_slots_paths.py) retrieves the paths associated with available slots from the `projects/.slots` file.
 
 ### Arguments
-  
-  - `extension` (`str`, optional): The file extension to append the path. Valid values: '.py', '.mpy' (default: `'.py'`).
+
   - `do_check` (`bool`, optional): Flag to indicate whether to perform a file format check (default: `False`).
   - `check_word` (`str`, optional): The word used for file format checking (default: empty string).
 
@@ -90,9 +89,6 @@ The `.slots` file can be utilized to access paths for all programs available on 
   - `dict`: The dictionary of available slots and their paths, or empty dictionary, if no available slots.
 > [!NOTE]
 > The dictionary is not sorted.
-
-### Raises
-  - `ValueError` if extension is not one of valid values: `'.py'`, `'.mpy'`.
 
 ### What the function exactly does
 
@@ -112,8 +108,7 @@ The function then applies a two-step check of the file.
 ### File reading
 This [code](/examples/file_content_reading.py) demonstrates how to retrieve the file path associated with the slot number `0` and print the contents of the file if it exists and has a `'.py'` extension. 
 ``` python
-def get_slots_paths(extension: str = '.py',
-                    do_check: bool = False,
+def get_slots_paths(do_check: bool = False,
                     check_word: str = '') -> dict:
     # Rest of the get_slots_paths implementation...
     return slots_dict
@@ -141,8 +136,7 @@ To run this example:
 ### Count occurances in a large file
 This [code](/examples/occurrences_counting.py) demonstrates how to retrieve the file path associated with the slot number `3`, count and print the occurrences of each digit (0-9) within data file from the third slot.
 ``` python
-def get_slots_paths(extension: str = '.py',
-                    do_check: bool = False,
+def get_slots_paths(do_check: bool = False,
                     check_word: str = '') -> dict:
     # Rest of the get_slots_paths implementation...
     return slots_dict
