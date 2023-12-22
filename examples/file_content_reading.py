@@ -1,8 +1,10 @@
-def get_slots_paths(do_check: bool = False,
-                    check_word: str = '') -> dict:
+def get_data_paths(do_check: bool = False,
+                   check_word: str = '') -> dict:
     """
     This function retrieves the paths associated with available slots
-    from the projects/.slots file.
+    with '.py' files from the '/projects/.slots' file.
+    Function ignores slots with successfully compiled programs -
+    '.mpy' files.
 
     Args:
     - do_check (bool, optional): Flag to indicate whether to perform
@@ -24,20 +26,23 @@ def get_slots_paths(do_check: bool = False,
     Note: this function does not work with SPIKE 3.
     """
     with open('projects/.slots', 'r') as slots_file:
-        slots_dict = eval(slots_file.readline())
+        paths_dict = eval(slots_file.readline())
 
-    for key in slots_dict:
-        slots_dict[key] = 'projects/{}/__init__.py'.format(
-            slots_dict[key]['id'])
+    for key in paths_dict:
+        paths_dict[key] = '/projects/{}/__init__.py'.format(
+            paths_dict[key]['id'])
 
         try:
-            with open(slots_dict[key], 'r') as test_file:
+            with open(paths_dict[key], 'r') as test_file:
+                # File format check:
                 if test_file.readline().split()[0] != check_word and do_check:
-                    del slots_dict[key]
-        except OSError:
-            del slots_dict[key]
+                    del paths_dict[key]
 
-    return slots_dict
+        # If file has '.mpy' extension - its slot-path pair will be deleted:
+        except OSError:
+            del paths_dict[key]
+
+    return paths_dict
 
 
 # This code snippet demonstrates how to retrieve
@@ -47,11 +52,12 @@ def get_slots_paths(do_check: bool = False,
 # error message will be print.
 slot = 0
 
-paths = get_slots_paths()
+paths = get_data_paths()
 if slot in paths:
     with open(paths[slot], 'r') as file:
         # Iterate through each line in the file and print its contents:
         for line in file:
             print(line)
 else:
-    print('Slot {} is empty or file has another extension.'.format(slot))
+    print("Slot {} is empty or this slot contains precompiled '.mpy' file."
+          "".format(slot))
