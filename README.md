@@ -150,7 +150,7 @@ the file path associated with the slot number `0` and print the contents
 of the file if it exists and has a `.py` extension. 
 ```python
 def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
-    # Rest of the get_data_paths implementation...
+    # Rest of the function implementation...
     return paths_dict
 
 
@@ -182,7 +182,7 @@ count and print the occurrences of each digit (0-9) within data file
 from the third slot.
 ```python
 def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
-    # Rest of the get_slots_paths implementation...
+    # Rest of the function implementation...
     return paths_dict
 
 
