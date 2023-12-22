@@ -1,5 +1,4 @@
-def get_data_paths(do_check: bool = False,
-                   check_word: str = '') -> dict:
+def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
     """
     This function retrieves the paths associated with available slots
     with '.py' files from the '/projects/.slots' file.
