@@ -192,8 +192,11 @@ paths = get_data_paths()
 if slot in paths:
     print('It may take a wail...\nPlease wait.')
     number_of_occurrences = [0 for _ in range(10)]
+    
     with open(paths[slot], 'r') as file:
-        next(file)  # skip first line
+        # Skip first line to avoid counting '3' before the decimal point:
+        next(file)
+        
         for line in file:
             for i in range(10):
                 number_of_occurrences[i] += line.count(str(i))
@@ -203,7 +206,8 @@ if slot in paths:
     print('Total: {}'.format(sum(number_of_occurrences)))
 
 else:
-    print('Slot {} is empty or file has another extension.'.format(slot))
+    print("Slot {} is empty or this slot contains precompiled '.mpy' file."
+          "".format(slot))
 ```
 Output:
 
