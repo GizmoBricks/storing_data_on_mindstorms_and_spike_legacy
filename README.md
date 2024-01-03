@@ -16,7 +16,7 @@ it will be precompiled by the app into a MicroPython `.mpy` file
 and stored in the Hub.
 
 A MicroPython file is a binary file. 
-More importantly, as it's a precompiled file, 
+More importantly, as it's a pre-compiled file, 
 its content will differ from the original file.
 
 
@@ -47,7 +47,7 @@ The ID of each project changes every time you run or upload the program
 from the app. However, this ID remains unchanged 
 if you run the program directly from the Hub.
 
-`.slots` file can be read with this code:
+The `.slots` file can be read with this code:
 ```python
 with open('projects/.slots', 'r') as file:
     for line in file:
@@ -61,9 +61,9 @@ The `.slots` file structure resembles a typical Python dictionary
 — a dictionary of dictionaries, to be precise.
 
 The top-level dictionary includes all available slots as keys 
-and dictionaries of projects attributes as values.
+and dictionaries of project attributes as values.
 
-These secondary level dictionaries contain project attributes such as:
+These secondary-level dictionaries contain project attributes such as:
   - the project's name in Base64 format
   - the project's ID
   - Unix timestamps of modification and creation
@@ -76,19 +76,19 @@ for all programs available on the Hub.
 
 # Uploading Data Files to the Hub
 
-1.	Create a Python Project with MINDSTORMS app or SPIKE Legacy app.
+1.	Create a Python Project with the MINDSTORMS or SPIKE Legacy apps.
 2.	Delete any existing data within the project.
 3.	Input or paste your data.
-4.	Select slot and upload or run the Project: 
+4.	Select a slot and upload or run the Project: 
     ![Uploading data into the Hub](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/b80a6d0c-0ce9-42ef-b7c7-075e3136e513)
 
 > [!NOTE]
-> If you choose to press 'Play', the app console return a SyntaxError. 
+> If you choose to press 'Play', the app console returns a SyntaxError. 
 > This is normal and the file will still be stored on the hub.
 > ![SyntaxError](https://github.com/GizmoBricks/get_slot_path/assets/127412675/79eaf3f6-2462-4473-94d1-ebb93c779ac1)
     	
 5.	Verify the Stored File:
-    - Press 'Open Hub connections', choose 'Programms' tab. 
+    - Press 'Open Hub connections' and choose the 'Programs' tab. 
     Wait patiently until the program appears in the respective slot's line. 
     ![Verifying the Stored File](https://github.com/GizmoBricks/get_slots_paths/assets/127412675/0f3f936a-1ae9-45d0-9b5d-7cdd05d86b29)
   
@@ -134,7 +134,7 @@ The function then applies a two-step check of the file.
 1. The first step tries to open the file, and if successful, 
    the first step passes. If an `OSError` occurs, 
    the slot number – path pair is deleted from the dictionary.
-   It is filter out files with extension different from `.py`.
+   It filters out files with extensions different from `.py`.
 
 2. Second check step (file format check):
 * If the `do_check` argument is `True`, 
@@ -147,7 +147,7 @@ The function then applies a two-step check of the file.
 ### File reading
 This code demonstrates how to retrieve 
 the file path associated with the slot number `0` and print the contents 
-of the file if it exists and has a `.py` extension. 
+of the file, if it exists and has a `.py` extension. 
 ```python
 def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
     # Rest of the function implementation...
@@ -175,10 +175,10 @@ To run this example:
 * Upload [this code](/examples/file_content_reading.py) into slot #19.
 * Run the program from slot #19.
 
-### Count occurrances in a large file
+### Count occurrences in a large file
 This code demonstrates how to retrieve 
 the file path associated with the slot number `3`, 
-count and print the occurrences of each digit (0-9) within data file 
+count and print the occurrences of each digit (0-9) within the data file 
 from the third slot.
 ```python
 def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
@@ -194,7 +194,7 @@ if slot in paths:
     number_of_occurrences = [0 for _ in range(10)]
     
     with open(paths[slot], 'r') as file:
-        # Skip first line to avoid counting '3' before the decimal point:
+        # Skip the first line to avoid counting '3' before the decimal point:
         next(file)
         
         for line in file:
@@ -219,4 +219,4 @@ To run this example:
 * Run the program from slot #19.
 > [!NOTE]
 > It may take approximately 6 minutes to store data and 2 and a half minutes 
-> to compete program.
+> to complete the program.
