@@ -2,7 +2,7 @@ def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
     """
     This function retrieves the paths associated with available slots
     with '.py' files from the '/projects/.slots' file.
-    Function ignores slots with successfully compiled programs -
+    The function ignores slots with successfully compiled programs -
     '.mpy' files.
 
     Args:
@@ -37,7 +37,7 @@ def get_data_paths(do_check: bool = False, check_word: str = '') -> dict:
                 if test_file.readline().split()[0] != check_word and do_check:
                     del paths_dict[key]
 
-        # If file has '.mpy' extension - its slot-path pair will be deleted:
+        # If the file has '.mpy' extension - its slot-path pair will be deleted:
         except OSError:
             del paths_dict[key]
 
@@ -52,7 +52,7 @@ if slot in paths:
     number_of_occurrences = [0 for _ in range(10)]
     
     with open(paths[slot], 'r') as file:
-        # Skip first line to avoid counting '3' before the decimal point:
+        # Skip the first line to avoid counting '3' before the decimal point:
         next(file)
         
         for line in file:
